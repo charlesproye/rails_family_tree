@@ -1,0 +1,6 @@
+<h1>All families</h1>
+
+<% @families.each do |family| %>
+  <%= link_to family.name, family_profiles_path(family.id)  %>
+<% end %>
+
