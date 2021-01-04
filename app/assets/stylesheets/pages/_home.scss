@@ -1,1 +1,17 @@
-// Specific CSS for your home-page
+// Specific CSS for your home-pa
+
+.back {
+  background-color: $bleu;
+  height:100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.back h1 {
+  color: white;
+  font-family: $title;
+  font-size: 64px;
+}
+
