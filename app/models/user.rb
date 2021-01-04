@@ -8,4 +8,5 @@ class User < ApplicationRecord
   has_ancestry
   has_many :couple_out, class_name: "Couple", foreign_key: :blood_user_id
   has_many :couple_blood, class_name: "Couple", foreign_key: :out_user_id
+  has_one_attached :photo
 end
