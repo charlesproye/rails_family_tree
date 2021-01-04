@@ -1,0 +1,27 @@
+.footer-setting {
+  background-color: $bleu;
+  height: 100px;
+  bottom: 0;
+  padding: 0px 50px;
+  width: 100vw;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  a{
+    transition: all 0.5s ease-out;
+    opacity:0.3;
+    color: rgb(0,0,0);
+    &:hover {
+      opacity:0.7;
+    }
+  }
+  i{
+    font-size:5px;
+  }
+}
+
+
+.fix-footer {
+    min-height: calc(100vh - 100px);
+    margin-top: 100px;
+}
