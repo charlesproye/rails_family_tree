@@ -26,9 +26,9 @@ require("channels")
 import "bootstrap";
 
 // Internal imports, e.g:
-// import { initSelect2 } from '../components/init_select2';
+import { changeSize } from './components/tree_width';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
-  // initSelect2();
+  changeSize();
 });

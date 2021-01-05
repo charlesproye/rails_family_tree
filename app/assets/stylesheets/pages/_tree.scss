@@ -1,11 +1,15 @@
 .tree {
-  width: 500px;
+  width: 700px;
   height: 300px;
   border: solid 1px $bleu;
-  overflow-y: scroll;
-  overflow-x: scroll;
+  overflow-x: scroll !important;
+  overflow-y: scroll !important;
 }
 
+#inside-div {
+  display: flex;
+  width: 3000px;
+}
 
 .tree ul {
   padding-top: 20px; position: relative;
@@ -16,7 +20,8 @@
 }
 
 .tree li {
-  float: left; text-align: center;
+  float: left;
+  text-align: center;
   list-style-type: none;
   position: relative;
   padding: 20px 5px 0 5px;

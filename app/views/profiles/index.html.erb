@@ -1,8 +1,9 @@
  <div class='container fix-footer'>
    <div class='mt-5'>Blablabale</div>
    <div class="tree">
+    <div id="inside-div">
       <ul>
-        <li>
+        <li id='tree-width'>
           <a href="#">
             <% @users.roots.each do |root| %>
               <%= root.first_name %>
@@ -17,7 +18,7 @@
                 <% end %>
               </a>
               <ul>
-                <% @users.select {|u| u.parent == child }.each do |grand_child| %>
+                <% @users.select {|u| u.parent == child }.each_with_index do |grand_child, index| %>
                   <% if grand_child.couple_blood == [] %>
                     <li><a href="#"><%= grand_child.first_name %></a></li>
                   <% end %>
@@ -28,6 +29,7 @@
           </ul>
         </li>
       </ul>
+    </div>
   </div>
  </div>
 
