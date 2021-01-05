@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_04_110614) do
+ActiveRecord::Schema.define(version: 2021_01_05_150429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 2021_01_04_110614) do
     t.date "birth_date"
     t.boolean "direct_blood"
     t.bigint "family_id", null: false
+    t.string "job"
     t.index ["ancestry"], name: "index_users_on_ancestry"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["family_id"], name: "index_users_on_family_id"

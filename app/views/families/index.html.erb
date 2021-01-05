@@ -3,7 +3,7 @@
   <div class='mt-3'>
     <% @families.each do |family| %>
       <%= link_to family_profiles_path(family.id), class:'card-family' do  %>
-          <% if family.photo.key != nil %>
+          <% if family.photo.attached? %>
               <%= cl_image_tag family.photo.key, class: 'avatar-family' %>
               <p> <%= "Famille #{family.name}" %> </p>
           <% else %>

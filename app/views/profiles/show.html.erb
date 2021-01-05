@@ -1,0 +1,12 @@
+<div class="container fix-footer">
+  <% if @user.photo.attached? %>
+      <%= cl_image_tag @user.photo.key, class: 'avatar-family' %>
+  <% else %>
+      <div class="avatar-family default"> <%= @user.first_name.first.upcase + @user.last_name.first.upcase  %></div>
+  <% end %>
+  <p> <%= @user.description %></p>
+  <p><%= @user.birth_date %></p>
+  <p><%= @user.job %></p>
+  <p><%= @user.first_name %></p>
+  <p><%= @user.last_name %></p>
+</div>

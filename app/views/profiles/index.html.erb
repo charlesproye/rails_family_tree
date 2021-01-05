@@ -1,35 +1,78 @@
  <div class='container fix-footer'>
-   <div class='mt-5'>Blablabale</div>
-   <div class="tree">
-    <div id="inside-div">
-      <ul>
-        <li id='tree-width'>
-          <a href="#">
-            <% @users.roots.each do |root| %>
-              <%= root.first_name %>
-            <% end %>
-          </a>
-          <ul>
-            <% @users.select {|u| u.parent == @users.roots.where(direct_blood:true).first }.each do |child| %>
-            <li>
-              <a href="#"><%= child.first_name %>
-                <% unless child.couple_out == [] %>
-                  <%= child.couple_out.first.out_user.first_name %>
-                <% end %>
-              </a>
-              <ul>
-                <% @users.select {|u| u.parent == child }.each_with_index do |grand_child, index| %>
-                  <% if grand_child.couple_blood == [] %>
-                    <li><a href="#"><%= grand_child.first_name %></a></li>
+     <div class="tree">
+      <div id="inside-div">
+        <ul>
+          <li id='tree-width'>
+            <div class='is-a-link'>
+              <div class='avatar-inline'>
+              <% @users.roots.each do |root| %>
+                <%= link_to family_profile_path(root.family, root), class: 'not-link' do  %>
+                  <% if root.photo.attached? %>
+                      <%= cl_image_tag root.photo.key, class: 'avatar-family' %>
+                  <% else %>
+                      <div class="avatar-family default"> <%= root.first_name.first.upcase + root.last_name.first.upcase  %></div>
                   <% end %>
-                <% end %>
-              </ul>
-            </li>
-            <% end %>
-          </ul>
-        </li>
-      </ul>
+                <%end%>
+              <% end %>
+              </div>
+            </div>
+            <ul>
+              <% @users.select {|u| u.parent == @users.roots.where(direct_blood:true).first }.each do |child| %>
+              <li>
+                <div class='is-a-link'>
+                  <div class='avatar-inline'>
+                    <%= link_to family_profile_path(child.family, child), class: 'not-link' do  %>
+                      <% if child.photo.attached? %>
+                          <%= cl_image_tag child.photo.key, class: 'avatar-family av-js' %>
+                      <% else %>
+                          <div class="avatar-family default av-js">
+                            <%= child.first_name.first.upcase + child.last_name.first.upcase  %>
+                            <div class='d-none box'>
+                              Hello there
+                            </div>
+                          </div>
+                      <% end %>
+                    <% end %>
+                    <% unless child.couple_out == [] %>
+                      <%= link_to family_profile_path(child.family, child), class: 'not-link' do  %>
+                        <% if child.couple_out.first.out_user.photo.attached? %>
+                            <%= cl_image_tag child.couple_out.first.out_user.photo.key, class: 'avatar-family' %>
+                        <% else %>
+                            <div class="avatar-family default"> <%= child.couple_out.first.out_user.first_name.first.upcase + child.couple_out.first.out_user.last_name.first.upcase  %></div>
+                        <% end %>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </div>
+                <ul>
+                  <% @users.select {|u| u.parent == child }.each_with_index do |grand_child, index| %>
+                    <% if grand_child.couple_blood == [] %>
+                      <li>
+                        <%= link_to family_profile_path(grand_child.family, grand_child) do  %>
+                          <div class='avatar-inline'>
+                            <div>
+                              <% if grand_child.photo.attached? %>
+                                  <%= cl_image_tag grand_child.photo.key, class: 'avatar-family' %>
+                              <% else %>
+                                  <div class="avatar-family default"> <%= grand_child.first_name.first.upcase + grand_child.last_name.first.upcase  %></div>
+                              <% end %>
+                            </div>
+                          </div>
+                        <% end %>
+                      </li>
+                    <% end %>
+                  <% end %>
+                </ul>
+              </li>
+              <% end %>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
+    <div class="d-flex justify-content-end mt-2">
+      <p id='zoom-out' class='blue-button-circle mr-2'>-</p>
+      <p id='zoom-in' class='blue-button-circle mr-2'>+</p>
+    </div>
  </div>
 

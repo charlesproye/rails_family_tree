@@ -27,8 +27,13 @@ import "bootstrap";
 
 // Internal imports, e.g:
 import { changeSize } from './components/tree_width';
+import { zoomInOut } from './components/tree_width';
+import { mouseOverTree } from './components/mouse_over_tree';
+
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   changeSize();
+  zoomInOut();
+  mouseOverTree();
 });
