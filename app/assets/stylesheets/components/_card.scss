@@ -1,5 +1,5 @@
 .card-family {
-  background-color: $taupe;
+  background-color: $gris-bleu;
   width: 300px;
   height:200px;
   color: $blanc;
@@ -7,5 +7,15 @@
   border-radius: 10px;
   display: flex;
   padding: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
+
+.card-family p {
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+
 

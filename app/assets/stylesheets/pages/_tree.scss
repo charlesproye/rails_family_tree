@@ -1,6 +1,11 @@
 .tree {
-  width: 110%;
+  width: 500px;
+  height: 300px;
+  border: solid 1px $bleu;
+  overflow-y: scroll;
+  overflow-x: scroll;
 }
+
 
 .tree ul {
   padding-top: 20px; position: relative;
@@ -19,6 +24,10 @@
   transition: all 0.5s;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
+}
+
+.tree ul > li {
+  display:inline !important;
 }
 
 /*We will use ::before and ::after to draw the connectors*/

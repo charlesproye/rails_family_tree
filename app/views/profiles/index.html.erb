@@ -1,32 +1,33 @@
- <div class="tree">
-    <ul>
-      <li>
-        <a href="#">
-          <% @users.roots.each do |root| %>
-            <%= root.first_name %>
-          <% end %>
-        </a>
-        <ul>
-          <% @users.select {|u| u.parent == @users.roots.where(direct_blood:true).first }.each do |child| %>
-          <li>
-            <a href="#"><%= child.first_name %>
-              <% unless child.couple_out == [] %>
-                <%= child.couple_out.first.out_user.first_name %>
-              <% end %>
-            </a>
-            <ul>
-              <% @users.select {|u| u.parent == child }.each do |grand_child| %>
-                <% if grand_child.couple_blood == [] %>
-                  <li><a href="#"><%= grand_child.first_name %></a></li>
+ <div class='container fix-footer'>
+   <div class='mt-5'>Blablabale</div>
+   <div class="tree">
+      <ul>
+        <li>
+          <a href="#">
+            <% @users.roots.each do |root| %>
+              <%= root.first_name %>
+            <% end %>
+          </a>
+          <ul>
+            <% @users.select {|u| u.parent == @users.roots.where(direct_blood:true).first }.each do |child| %>
+            <li>
+              <a href="#"><%= child.first_name %>
+                <% unless child.couple_out == [] %>
+                  <%= child.couple_out.first.out_user.first_name %>
                 <% end %>
-              <% end %>
-            </ul>
-          </li>
-          <% end %>
-        </ul>
-      </li>
-    </ul>
+              </a>
+              <ul>
+                <% @users.select {|u| u.parent == child }.each do |grand_child| %>
+                  <% if grand_child.couple_blood == [] %>
+                    <li><a href="#"><%= grand_child.first_name %></a></li>
+                  <% end %>
+                <% end %>
+              </ul>
+            </li>
+            <% end %>
+          </ul>
+        </li>
+      </ul>
   </div>
-</div>
+ </div>
 
-<%= console %>
