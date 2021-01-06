@@ -1,6 +1,6 @@
 .tree {
   margin-top: 5px;
-  width: 75%;
+  width: 70%;
   height: 500px;
   border: solid 1px $bleu;
   overflow-x: scroll !important;
@@ -171,8 +171,15 @@ right connector from last child*/
   margin-top: 5px;
   margin-left: 10px;
   background-color: $gris-bleu;
-  height: 200px;
-  width: 200px;
-  z-index: 1000;
+  height: 40%;
+}
+
+.search-box {
+  padding: 20px;
+  margin: auto;
+  margin-top: 10px;
+  margin-left: 10px;
+  background-color: $taupe;
+  height: calc(60% - 15px);
 }
 

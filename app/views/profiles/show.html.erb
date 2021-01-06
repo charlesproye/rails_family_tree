@@ -1,12 +1,101 @@
 <div class="container fix-footer">
-  <% if @user.photo.attached? %>
-      <%= cl_image_tag @user.photo.key, class: 'avatar-family' %>
-  <% else %>
-      <div class="avatar-family default"> <%= @user.first_name.first.upcase + @user.last_name.first.upcase  %></div>
-  <% end %>
-  <p> <%= @user.description %></p>
-  <p><%= @user.birth_date %></p>
-  <p><%= @user.job %></p>
-  <p><%= @user.first_name %></p>
-  <p><%= @user.last_name %></p>
+  <div class="grid-container-show">
+
+    <div class="me-section">
+      <% if @user.photo.attached? %>
+          <%= cl_image_tag @user.photo.key, class: 'avatar-family' %>
+      <% else %>
+          <div class="avatar-family default"> <%= @user.first_name.first.upcase + @user.last_name.first.upcase  %></div>
+      <% end %>
+      <p> <%= @user.description %></p>
+      <p><%= @user.birth_date %></p>
+      <p><%= @user.job %></p>
+      <p><%= @user.first_name %></p>
+      <p><%= @user.last_name %></p>
+    </div>
+
+
+    <!-- parents -->
+    <% if @user.direct_blood && @user.parent != nil %>
+        <%= link_to family_profile_path(@user.family,@user.parent) do %>
+          <div class='card-siblings relatives-section'>
+            <% if @user.parent.photo.attached? %>
+              <%= cl_image_tag @user.parent.photo.key, class: 'avatar-family-small' %>
+            <% else %>
+              <div class="avatar-family-small default-small" >
+                <%= @user.parent.first_name.first.upcase + @user.parent.last_name.first.upcase  %>
+              </div>
+            <% end %>
+            <p> <%= @user.parent.first_name.capitalize %> <%= @user.parent.last_name.capitalize %> </p>
+          </div>
+        <% end %>
+      <% if @user.parent.couple_out != [] %>
+        <%= link_to family_profile_path(@user.family,@user.parent.couple_out.first.out_user) do %>
+          <div class='card-siblings relatives-section'>
+            <% if @user.parent.couple_out.first.out_user.photo.attached? %>
+              <%= cl_image_tag @user.parent.couple_out.first.out_user.photo.key, class: 'avatar-family-small' %>
+            <% else %>
+              <div class="avatar-family-small default-small" >
+                <%= @user.parent.couple_out.first.out_user.first_name.first.upcase + @user.parent.couple_out.first.out_user.last_name.first.upcase  %>
+              </div>
+            <% end %>
+            <p> <%= @user.parent.couple_out.first.out_user.first_name.capitalize %> <%= @user.parent.couple_out.first.out_user.last_name.capitalize %> </p>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+    <!-- child -->
+    <!-- couple -->
+    <% if @user.couple_out !=[] %>
+      <%= link_to family_profile_path(@user.family,@user.couple_out.first.out_user) do %>
+        <div class='card-siblings relatives-section'>
+          <% if @user.couple_out.first.out_user.photo.attached? %>
+            <%= cl_image_tag @user.couple_out.first.out_user.photo.key, class: 'avatar-family-small' %>
+          <% else %>
+            <div class="avatar-family-small default-small" >
+              <%= @user.couple_out.first.out_user.first_name.first.upcase + @user.couple_out.first.out_user.last_name.first.upcase  %>
+            </div>
+          <% end %>
+          <p> <%= @user.couple_out.first.out_user.first_name.capitalize %> <%= @user.couple_out.first.out_user.last_name.capitalize %> </p>
+        </div>
+      <% end %>
+    <% end %>
+
+    <% if @user.couple_blood !=[] %>
+      <%= link_to family_profile_path(@user.family,@user.couple_blood.first.blood_user) do %>
+        <div class='card-siblings relatives-section'>
+          <% if @user.couple_blood.first.blood_user.photo.attached? %>
+            <%= cl_image_tag @user.couple_blood.first.blood_user.photo.key, class: 'avatar-family-small' %>
+          <% else %>
+            <div class="avatar-family-small default-small" >
+              <%= @user.couple_blood.first.blood_user.first_name.first.upcase + @user.couple_blood.first.blood_user.last_name.first.upcase  %>
+            </div>
+          <% end %>
+          <p> <%= @user.couple_blood.first.blood_user.first_name.capitalize %> <%= @user.couple_blood.first.blood_user.last_name.capitalize %> </p>
+        </div>
+        <% end %>
+    <% end %>
+
+    <!-- siblings -->
+    <% if @user.direct_blood && @user.siblings.count != 0 %>
+      <% @user.siblings.where(direct_blood: true).reject {|user| user.id == @user.id}.each do |sibling| %>
+        <%= link_to family_profile_path(@user.family, sibling) do  %>
+          <div class='card-siblings relatives-section'>
+            <% if sibling.photo.attached? %>
+              <%= cl_image_tag sibling.photo.key, class: 'avatar-family-small' %>
+            <% else %>
+              <div class="avatar-family-small default-small" >
+                <%= sibling.first_name.first.upcase + sibling.last_name.first.upcase  %>
+              </div>
+            <% end %>
+            <p> <%= sibling.first_name.capitalize %> <%= sibling.last_name.capitalize %> </p>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
 </div>
+
+
+<%= console %>

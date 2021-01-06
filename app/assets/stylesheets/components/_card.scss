@@ -17,5 +17,19 @@
   margin-top: 10px;
 }
 
+.card-siblings {
+  background-color: $gris-bleu;
+  width: 100px;
+  height:100px;
+  color: $blanc;
+  box-shadow: 0 0 2px grey;
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
 
 

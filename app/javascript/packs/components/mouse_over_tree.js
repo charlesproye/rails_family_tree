@@ -6,15 +6,13 @@ const mouseOverTree = () => {
     avatars.forEach((avatar) => {
       avatar.addEventListener('mouseenter', () => {
         const box = document.querySelector('.box');
-        console.log(box);
         const firstName = avatar.dataset.firstname.charAt(0).toUpperCase() + avatar.dataset.firstname.slice(1)
         const firstNameLetter = firstName.charAt(0).toUpperCase()
         const lastName = avatar.dataset.lastname.charAt(0).toUpperCase() + avatar.dataset.lastname.slice(1)
         const lastNameLetter = lastName.charAt(0).toUpperCase()
         const job = avatar.dataset.job
         const birthDate = avatar.dataset.birthdate
-         const age = avatar.dataset.age
-        box.classList.remove('d-none');
+        const age = avatar.dataset.age
         //cloudinary.imageTag('front_face.png', {secure: true}).toHtml();
         box.innerHTML = `
           <div class="avatar-family default text-center">
@@ -28,7 +26,10 @@ const mouseOverTree = () => {
 
       avatar.addEventListener('mouseleave', () => {
         const box = document.querySelector('.box');
-        box.classList.add('d-none');
+        const family = avatar.dataset.family.toUpperCase();
+        box.innerHTML = `
+        <h2 class='blanc-color text-center mt-5'>Famille ${family}</h2>
+        `
       });
     });
   };
