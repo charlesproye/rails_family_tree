@@ -1,17 +1,23 @@
-
+<%
+  require "date"
+  def age(dob)
+    now = Time.now.utc.to_date
+    now.year - dob.year - ((now.month > dob.month || (now.month == dob.month && now.day >= dob.day)) ? 0 : 1)
+  end
+%>
 
 <div class="container fix-footer">
   <div class="d-flex" style='margin-top:150px;'>
     <div class='me-section'>
       <div class="d-flex">
         <% if @user.photo.attached? %>
-            <%= cl_image_tag @user.photo.key, class: 'avatar-family-large' %>
+            <%= cl_image_tag @user.photo.key, class: 'avatar-family-large ml-3' %>
         <% else %>
-            <div class="avatar-family-large default-large"> <%= @user.first_name.first.upcase + @user.last_name.first.upcase  %></div>
+            <div class="avatar-family-large default-large ml-3"> <%= @user.first_name.first.upcase + @user.last_name.first.upcase  %></div>
         <% end %>
         <div class='basic-info'>
           <h2><%= @user.first_name.capitalize %> <%= @user.last_name.upcase %></h2>
-          <p>Né le <%= @user.birth_date.strftime('%d/%m/%y') %></p>
+          <p>Né le <%= @user.birth_date.strftime('%d/%m/%y') %> - <%= age(@user.birth_date)%>ans</p>
           <p><%= @user.job %></p>
           <p>Habite à <%= @user.city %></p>
         </div>
@@ -20,9 +26,9 @@
           <div class='text-center'>
             <p class='bleu-color' style='font-size: 16px;'>Le petit mot sur <%= @user.first_name.capitalize %> pour la famille <%= @user.family.name %></p>
           <% if @user.description == nil %>
-            <div class='blanc-color' style='font-size: 16px; font-style: italic;'><%= @user.first_name.capitalize %> n'a pas encore rempli sa description.</div>
+            <div class='blanc-color' style='font-size: 20px; font-style: italic;'><%= @user.first_name.capitalize %> n'a pas encore rempli sa description.</div>
           <% else %>
-            <div class='blanc-color' style='font-size: 16px; font-style: italic;'>"<%= @user.description %>"</div>
+            <div class='blanc-color' style='font-size: 20px; font-style: italic;'>"<%= @user.description %>"</div>
           <% end %>
           </div>
         </div>
@@ -32,7 +38,7 @@
       <!-- parents -->
     <div class='relatives'>
       <h2 class='text-center'>Famille proche</h2>
-      <div class="grid-container-show">
+      <div class="grid-container-show mt-3">
         <% if @user.direct_blood && @user.parent != nil %>
             <%= link_to family_profile_path(@user.family,@user.parent) do %>
               <div class='card-siblings relatives-section'>

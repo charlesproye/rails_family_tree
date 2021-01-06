@@ -17,11 +17,11 @@
               <% @users.roots.each do |root| %>
                 <%= link_to family_profile_path(root.family, root), class: 'not-link' do  %>
                   <% if root.photo.attached? %>
-                    <div class='av-js' data-job='<%= root.job %>' data-firstname='<%= root.first_name %>' data-lastname='<%= root.last_name %>' data-birthdate='<%= root.birth_date %>'  data-age='%= age(root.birth_date) %>' data-family='<%=@users.first.family.name %>'>
+                    <div class='av-js' data-job='<%= root.job %>' data-firstname='<%= root.first_name %>' data-lastname='<%= root.last_name %>' data-birthdate='<%= root.birth_date.strftime('%d/%m/%y') %>'  data-age='%= age(root.birth_date) %>' data-family='<%=@users.first.family.name %>'>
                       <%= cl_image_tag root.photo.key, class: 'avatar-family' %>
                     </div>
                   <% else %>
-                      <div class="avatar-family default av-js" data-job='<%= root.job %>' data-firstname='<%= root.first_name %>' data-lastname='<%= root.last_name %>' data-birthdate='<%= root.birth_date %>' data-age='<%= age(root.birth_date) %>' data-family='<%=@users.first.family.name %>' >
+                      <div class="avatar-family default av-js" data-job='<%= root.job %>' data-firstname='<%= root.first_name %>' data-lastname='<%= root.last_name %>' data-birthdate='<%= root.birth_date.strftime('%d/%m/%y') %>' data-age='<%= age(root.birth_date) %>' data-family='<%=@users.first.family.name %>' >
                         <%= root.first_name.first.upcase + root.last_name.first.upcase %>
                       </div>
                   <% end %>
@@ -36,11 +36,11 @@
                   <div class='avatar-inline'>
                     <%= link_to family_profile_path(child.family, child), class: 'not-link' do  %>
                       <% if child.photo.attached? %>
-                      <div class='av-js' data-job='<%= child.job %>' data-firstname='<%= child.first_name %>' data-lastname='<%= child.last_name %>' data-birthdate='<%= child.birth_date %>' data-age='<%= age(child.birth_date) %>' data-family='<%=@users.first.family.name %>'>
+                      <div class='av-js' data-job='<%= child.job %>' data-firstname='<%= child.first_name %>' data-lastname='<%= child.last_name %>' data-birthdate='<%= child.birth_date.strftime('%d/%m/%y') %>' data-age='<%= age(child.birth_date) %>' data-family='<%=@users.first.family.name %>'>
                           <%= cl_image_tag child.photo.key, class: 'avatar-family av-js' %>
                       </div>
                       <% else %>
-                          <div class="avatar-family default av-js" data-job='<%= child.job %>' data-firstname='<%= child.first_name %>' data-lastname='<%= child.last_name %>' data-birthdate='<%= child.birth_date %>' data-age='<%= age(child.birth_date) %>' data-family='<%=@users.first.family.name %>' >
+                          <div class="avatar-family default av-js" data-job='<%= child.job %>' data-firstname='<%= child.first_name %>' data-lastname='<%= child.last_name %>' data-birthdate='<%= child.birth_date.strftime('%d/%m/%y') %>' data-age='<%= age(child.birth_date) %>' data-family='<%=@users.first.family.name %>' >
                             <%= child.first_name.first.upcase + child.last_name.first.upcase  %>
                           </div>
                       <% end %>
@@ -48,11 +48,11 @@
                     <% unless child.couple_out == [] %>
                       <%= link_to family_profile_path(child.family, child.couple_out.first.out_user), class: 'not-link' do  %>
                         <% if child.couple_out.first.out_user.photo.attached? %>
-                          <div class="av-js" data-job='<%= child.couple_out.first.out_user.job %>' data-firstname='<%= child.couple_out.first.out_user.first_name %>' data-lastname='<%= child.couple_out.first.out_user.last_name %>' data-birthdate='<%= child.couple_out.first.out_user.birth_date %>' data-age='<%= age(child.couple_out.first.out_user.birth_date) %>' data-family='<%=@users.first.family.name %>'>
+                          <div class="av-js" data-job='<%= child.couple_out.first.out_user.job %>' data-firstname='<%= child.couple_out.first.out_user.first_name %>' data-lastname='<%= child.couple_out.first.out_user.last_name %>' data-birthdate='<%= child.couple_out.first.out_user.birth_date.strftime('%d/%m/%y') %>' data-age='<%= age(child.couple_out.first.out_user.birth_date) %>' data-family='<%=@users.first.family.name %>'>
                             <%= cl_image_tag child.couple_out.first.out_user.photo.key, class: 'avatar-family' %>
                           </div>
                         <% else %>
-                            <div class="avatar-family default av-js" data-job='<%= child.couple_out.first.out_user.job %>' data-firstname='<%= child.couple_out.first.out_user.first_name %>' data-lastname='<%= child.couple_out.first.out_user.last_name %>' data-birthdate='<%= child.couple_out.first.out_user.birth_date %>' data-age='<%= age(child.couple_out.first.out_user.birth_date) %>' data-family='<%=@users.first.family.name %>'>
+                            <div class="avatar-family default av-js" data-job='<%= child.couple_out.first.out_user.job %>' data-firstname='<%= child.couple_out.first.out_user.first_name %>' data-lastname='<%= child.couple_out.first.out_user.last_name %>' data-birthdate='<%= child.couple_out.first.out_user.birth_date.strftime('%d/%m/%y') %>' data-age='<%= age(child.couple_out.first.out_user.birth_date) %>' data-family='<%=@users.first.family.name %>'>
                               <%= child.couple_out.first.out_user.first_name.first.upcase + child.couple_out.first.out_user.last_name.first.upcase  %>
                             </div>
                         <% end %>
@@ -68,11 +68,11 @@
                           <div class='avatar-inline'>
                             <div>
                               <% if grand_child.photo.attached? %>
-                                <div class="av-js" data-job='<%= grand_child.job %>' data-firstname='<%= grand_child.first_name %>' data-lastname='<%= grand_child.last_name %>' data-birthdate='<%= grand_child.birth_date %>' data-age='<%= age(grand_child.birth_date) %>' data-family='<%=@users.first.family.name %>'>
+                                <div class="av-js" data-job='<%= grand_child.job %>' data-firstname='<%= grand_child.first_name %>' data-lastname='<%= grand_child.last_name %>' data-birthdate='<%= grand_child.birth_date.strftime('%d/%m/%y') %>' data-age='<%= age(grand_child.birth_date) %>' data-family='<%=@users.first.family.name %>'>
                                   <%= cl_image_tag grand_child.photo.key, class: 'avatar-family' %>
                                 </div>
                               <% else %>
-                                  <div class="avatar-family default av-js" data-job='<%= grand_child.job %>' data-firstname='<%= grand_child.first_name %>' data-lastname='<%= grand_child.last_name %>' data-birthdate='<%= grand_child.birth_date %>' data-age='<%= age(grand_child.birth_date) %>' data-family='<%=@users.first.family.name %>'>
+                                  <div class="avatar-family default av-js" data-job='<%= grand_child.job %>' data-firstname='<%= grand_child.first_name %>' data-lastname='<%= grand_child.last_name %>' data-birthdate='<%= grand_child.birth_date.strftime('%d/%m/%y') %>' data-age='<%= age(grand_child.birth_date) %>' data-family='<%=@users.first.family.name %>'>
                                     <%= grand_child.first_name.first.upcase + grand_child.last_name.first.upcase  %>
                                   </div>
                               <% end %>

@@ -19,7 +19,7 @@ const mouseOverTree = () => {
             ${firstNameLetter}${lastNameLetter}
           </div>
             <p class='mt-2 blanc-color'>${firstName} ${lastName}</p>
-            <p class='mt-2 blanc-color'>${birthDate} (${age} ans)</p>
+            <p class='mt-2 blanc-color'>${birthDate} - ${age} ans</p>
             <p class='mt-2 blanc-color'>${job}</p>
         `
       });
