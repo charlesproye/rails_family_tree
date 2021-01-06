@@ -1,0 +1,121 @@
+
+
+<div class="container fix-footer">
+  <div class="d-flex" style='margin-top:150px;'>
+    <div class='me-section'>
+      <div class="d-flex">
+        <% if @user.photo.attached? %>
+            <%= cl_image_tag @user.photo.key, class: 'avatar-family-large' %>
+        <% else %>
+            <div class="avatar-family-large default-large"> <%= @user.first_name.first.upcase + @user.last_name.first.upcase  %></div>
+        <% end %>
+        <div class='basic-info'>
+          <h2><%= @user.first_name.capitalize %> <%= @user.last_name.upcase %></h2>
+          <p>Né le <%= @user.birth_date.strftime('%d/%m/%y') %></p>
+          <p><%= @user.job %></p>
+          <p>Habite à <%= @user.city %></p>
+        </div>
+      </div>
+        <div class='d-flex justify-content-center align-items-center' id='description-section'>
+          <div class='text-center'>
+            <p class='bleu-color' style='font-size: 16px;'>Le petit mot sur <%= @user.first_name.capitalize %> pour la famille <%= @user.family.name %></p>
+          <% if @user.description == nil %>
+            <div class='blanc-color' style='font-size: 16px; font-style: italic;'><%= @user.first_name.capitalize %> n'a pas encore rempli sa description.</div>
+          <% else %>
+            <div class='blanc-color' style='font-size: 16px; font-style: italic;'>"<%= @user.description %>"</div>
+          <% end %>
+          </div>
+        </div>
+    </div>
+
+
+      <!-- parents -->
+    <div class='relatives'>
+      <h2 class='text-center'>Famille proche</h2>
+      <div class="grid-container-show">
+        <% if @user.direct_blood && @user.parent != nil %>
+            <%= link_to family_profile_path(@user.family,@user.parent) do %>
+              <div class='card-siblings relatives-section'>
+                <% if @user.parent.photo.attached? %>
+                  <%= cl_image_tag @user.parent.photo.key, class: 'avatar-family mb-2' %>
+                <% else %>
+                  <div class="avatar-family mb-2 default" >
+                    <%= @user.parent.first_name.first.upcase + @user.parent.last_name.first.upcase  %>
+                  </div>
+                <% end %>
+                <p style='margin: 0px;'> <%= @user.parent.first_name.capitalize %> <%= @user.parent.last_name.capitalize %> </p>
+                <p style='font-size: 12px; font-style: italic; margin: 0px;'>Parent</p>
+              </div>
+            <% end %>
+          <% if @user.parent.couple_out != [] %>
+            <%= link_to family_profile_path(@user.family,@user.parent.couple_out.first.out_user) do %>
+              <div class='card-siblings relatives-section'>
+                <% if @user.parent.couple_out.first.out_user.photo.attached? %>
+                  <%= cl_image_tag @user.parent.couple_out.first.out_user.photo.key, class: 'avatar-family mb-2' %>
+                <% else %>
+                  <div class="avatar-family mb-2 default" >
+                    <%= @user.parent.couple_out.first.out_user.first_name.first.upcase + @user.parent.couple_out.first.out_user.last_name.first.upcase  %>
+                  </div>
+                <% end %>
+                <p style='margin: 0px;'> <%= @user.parent.couple_out.first.out_user.first_name.capitalize %> <%= @user.parent.couple_out.first.out_user.last_name.capitalize %> </p>
+                <p style='font-size: 12px; font-style: italic; margin: 0px;'>Parent</p>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+        <!-- child -->
+        <!-- couple -->
+        <% if @user.couple_out !=[] %>
+          <%= link_to family_profile_path(@user.family,@user.couple_out.first.out_user) do %>
+            <div class='card-siblings relatives-section'>
+              <% if @user.couple_out.first.out_user.photo.attached? %>
+                <%= cl_image_tag @user.couple_out.first.out_user.photo.key, class: 'avatar-family mb-2' %>
+              <% else %>
+                <div class="avatar-family mb-2 default" >
+                  <%= @user.couple_out.first.out_user.first_name.first.upcase + @user.couple_out.first.out_user.last_name.first.upcase  %>
+                </div>
+              <% end %>
+              <p style='margin: 0px;'> <%= @user.couple_out.first.out_user.first_name.capitalize %> <%= @user.couple_out.first.out_user.last_name.capitalize %> </p>
+              <p style='font-size: 12px; font-style: italic; margin: 0px;'>Epoux(se)</p>
+            </div>
+          <% end %>
+        <% end %>
+
+        <% if @user.couple_blood !=[] %>
+          <%= link_to family_profile_path(@user.family,@user.couple_blood.first.blood_user) do %>
+            <div class='card-siblings relatives-section'>
+              <% if @user.couple_blood.first.blood_user.photo.attached? %>
+                <%= cl_image_tag @user.couple_blood.first.blood_user.photo.key, class: 'avatar-family mb-2' %>
+              <% else %>
+                <div class="avatar-family mb-2 default" >
+                  <%= @user.couple_blood.first.blood_user.first_name.first.upcase + @user.couple_blood.first.blood_user.last_name.first.upcase  %>
+                </div>
+              <% end %>
+              <p style='margin: 0px;'> <%= @user.couple_blood.first.blood_user.first_name.capitalize %> <%= @user.couple_blood.first.blood_user.last_name.capitalize %> </p>
+              <p style='font-size: 12px; font-style: italic; margin: 0px;'>Epoux(se)</p>
+            </div>
+            <% end %>
+        <% end %>
+
+        <!-- siblings -->
+        <% if @user.direct_blood && @user.siblings.count != 0 %>
+          <% @user.siblings.where(direct_blood: true).reject {|user| user.id == @user.id}.each do |sibling| %>
+            <%= link_to family_profile_path(@user.family, sibling) do  %>
+              <div class='card-siblings relatives-section'>
+                <% if sibling.photo.attached? %>
+                  <%= cl_image_tag sibling.photo.key, class: 'avatar-family mb-2' %>
+                <% else %>
+                  <div class="avatar-family mb-2 default" >
+                    <%= sibling.first_name.first.upcase + sibling.last_name.first.upcase  %>
+                  </div>
+                <% end %>
+                <p style='margin: 0px;'> <%= sibling.first_name.capitalize %> <%= sibling.last_name.capitalize %> </p>
+                <p style='font-size: 12px; font-style: italic; margin: 0px;'>Frère / Soeur</p>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -26,6 +26,52 @@
   background-size: cover;
 }
 
+.avatar-family-small {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-size: cover;
+}
+
+.avatar-family-large {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-size: cover;
+}
+
+.default-large {
+  background-color: $bleu;
+  color: $blanc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size:24px;
+  padding: 0 75px;
+  margin: 2px;
+}
+
+.default-small {
+  background-color: $bleu;
+  color: $blanc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size:14px;
+  margin: 2px;
+}
+
 .default {
-  background-image: url('https://iupac.org/wp-content/uploads/2018/05/default-avatar.png')
+  background-color: $bleu;
+  color: $blanc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size:20px;
+  margin: 2px;
+}
+
+.avatar-inline {
+  display: flex;
+
 }

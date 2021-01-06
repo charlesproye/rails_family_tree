@@ -8,8 +8,9 @@
     </div>
 <% else %>
   <div class="navbar-lewagon justify-content-center">
-    <a href="#">Arbre</a>
+    <%= link_to "Arbre", families_path %>
     <a href="#">Actualités</a>
+    <%= link_to "Mon profil", edit_user_registration_path %>
     <%= link_to "Déconnecter", destroy_user_session_path, method: :delete %>
   </div>
 <% end %>

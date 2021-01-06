@@ -24,11 +24,17 @@ require("channels")
 
 // External imports
 import "bootstrap";
+import {Cloudinary} from 'cloudinary-core';
 
 // Internal imports, e.g:
-// import { initSelect2 } from '../components/init_select2';
+import { changeSize } from './components/tree_width';
+import { zoomInOut } from './components/tree_width';
+import { mouseOverTree } from './components/mouse_over_tree';
+
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
-  // initSelect2();
+  changeSize();
+  zoomInOut();
+  mouseOverTree();
 });

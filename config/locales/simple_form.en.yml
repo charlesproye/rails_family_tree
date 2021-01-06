@@ -29,3 +29,6 @@ en:
     # prompts:
     #   defaults:
     #     age: 'Select your age'
+  date:
+    month_names: [~, Janvier, Fevrier, Mars, Avril, Mai, Juin, Juillet, Août, Septembre, Octobre, Novembre, Décembre]
+    abbr_month_names: [~, Jan, Fev, Mar, Avr, Mai, Juin, Juil, Aout, Sep, Oct, Nov, Dec]

@@ -1,0 +1,145 @@
+.bleu-button {
+  color: $blanc;
+  background-color: $bleu;
+  border-radius: 3px;
+  padding: 4px;
+  font-family: $title;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-align: center;
+  transition: background 0.3s ease;
+  border: none !important;
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+    color: $blanc;
+    border: none !important;
+  }
+}
+
+.blue-button-circle {
+  color: $blanc;
+  background-color: $bleu;
+  border-radius: 50%;
+  padding: 1px 10px;
+  font-family: $title;
+  font-size: 20px;
+  text-transform: uppercase;
+  text-align: center;
+  transition: background 0.3s ease;
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+
+}
+
+.taupe-button {
+  color: $blanc;
+  background-color: $taupe;
+  border-radius: 3px;
+  padding: 4px;
+  font-family: $title;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-align: center;
+  transition: background 0.3s ease;
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+
+}
+
+.beige-button {
+  color: $blanc;
+  background-color: $beige;
+  border-radius: 3px;
+  padding: 4px;
+  font-family: $title;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-align: center;
+  transition: background 0.3s ease;
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+
+}
+
+.gris-bleu-button {
+  color: $blanc;
+  background-color: $gris-bleu;
+  border-radius: 3px;
+  padding: 4px;
+  font-family: $title;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-align: center;
+  transition: background 0.3s ease;
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+  }
+
+}
+
+
+
+// Color
+.bleu-color {
+  color: $bleu;
+  &:hover {
+    color: $bleu;
+  };
+}
+
+.gris-bleu-color {
+  color: $gris-bleu;
+  &:hover {
+    color: $gris-bleu;
+  };
+}
+
+.beige-color {
+  color: $beige;
+  &:hover {
+    color: $beige;
+  };
+}
+
+.blanc-color {
+  color: $blanc;
+  &:hover {
+    color: $blanc
+  };
+}
+
+.taupe-color {
+  color: $taupe;
+  &:hover {
+    color: $taupe
+  }
+}
+
+//Background
+.bleu-background-color {
+  background-color: $bleu;
+}
+
+.gris-bleu-background-color {
+  background-color: $gris-bleu;
+}
+
+.beige-background-color {
+  background-color: $beige;
+}
+
+.blanc-background-color {
+  background-color: $blanc;
+}
+
+.taupe-background-color {
+  background-color: $taupe;
+}
