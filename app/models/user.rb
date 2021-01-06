@@ -12,6 +12,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :birth_date, presence: true
+  validates :city, presence: true
 
   include PgSearch::Model
   pg_search_scope :search_by_job_first_last,
