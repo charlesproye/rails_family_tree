@@ -1,6 +1,6 @@
 .tree {
   margin-top: 5px;
-  width: 100%;
+  width: 75%;
   height: 500px;
   border: solid 1px $bleu;
   overflow-x: scroll !important;
@@ -166,11 +166,13 @@ right connector from last child*/
 }
 
 .box {
-  position: absolute;
-  background-color: $bleu;
-  top: 0px;
-  left: 100px;
+  padding: 20px;
+  margin: auto;
+  margin-top: 5px;
+  margin-left: 10px;
+  background-color: $gris-bleu;
   height: 200px;
   width: 200px;
   z-index: 1000;
 }
+

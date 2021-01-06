@@ -9,4 +9,7 @@ class User < ApplicationRecord
   has_many :couple_out, class_name: "Couple", foreign_key: :blood_user_id
   has_many :couple_blood, class_name: "Couple", foreign_key: :out_user_id
   has_one_attached :photo
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :birth_date, presence: true
 end

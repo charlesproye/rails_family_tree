@@ -24,6 +24,7 @@ require("channels")
 
 // External imports
 import "bootstrap";
+import {Cloudinary} from 'cloudinary-core';
 
 // Internal imports, e.g:
 import { changeSize } from './components/tree_width';
