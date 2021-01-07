@@ -17,12 +17,11 @@ const mouseOverTree = () => {
           const age = avatar.dataset.age
           //cloudinary.imageTag('front_face.png', {secure: true}).toHtml();
           box.innerHTML = `
-            <div class="avatar-family default text-center">
-              ${firstNameLetter}${lastNameLetter}
-            </div>
-              <p class='mt-2 blanc-color'>${firstName} ${lastName}</p>
+            <div class='text-center mt-5'>
+              <h2 class='mt-2 blanc-color'>${firstName} ${lastName}</h2>
               <p class='mt-2 blanc-color'>${birthDate} - ${age} ans</p>
               <p class='mt-2 blanc-color'>${job}</p>
+            </div>
           `
         });
 

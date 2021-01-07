@@ -2,11 +2,13 @@
   margin-top: 5px;
   width: 70%;
   height: 500px;
-  border: solid 1px $bleu;
+  border: solid 0.5px $taupe;
   overflow-x: scroll !important;
   overflow-y: scroll !important;
   position: relative;
   white-space: nowrap;
+  border-radius: 3px;
+  box-shadow: 0 0 1px rgba(200,200,200,0.5)
 }
 
 .tree-show {
@@ -186,6 +188,7 @@ right connector from last child*/
   margin-left: 10px;
   background-color: $gris-bleu;
   height: 40%;
+  border-radius: 3px;
 }
 
 .search-box {
@@ -194,7 +197,8 @@ right connector from last child*/
   margin-top: 10px;
   margin-left: 10px;
   background-color: $taupe;
-  height: calc(60% - 15px);
+  border-radius: 3px;
+  max-height: calc(60% - 15px)
 }
 
 .search-section:hover {
@@ -346,3 +350,8 @@ right connector from last child*/
     transform: scale(1.1);
   }
 }
+
+.form-control {
+  height: 28px;
+}
+
