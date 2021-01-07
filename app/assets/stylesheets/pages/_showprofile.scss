@@ -105,3 +105,15 @@
   width   : 50%;  /* or 100px */
   border-bottom:2px solid $blanc;
 }
+
+.grid-some {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+}
+
+i::before,
+i::after {
+    content: '';
+    flex: 1 0 auto;
+}

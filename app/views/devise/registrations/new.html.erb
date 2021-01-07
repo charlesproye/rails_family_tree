@@ -20,6 +20,8 @@
                   input_html: { autocomplete: "new-password" } %>
       <%= f.input :first_name, label: 'Prénom'  %>
       <%= f.input :last_name, label: 'Nom' %>
+      <%= f.input :phone, label: 'Numéro de téléphone', placeholder: 'Au format 06 00 00 00 00...' %>
+      <%= f.input :lady_name, label: 'Nom de jeune fille (le cas échéant)' %>
       <%= f.input :job, label: 'Activité'%>
       <%= f.input :description, label: 'Un petit mot sur vous pour la famille ?' %>
       <%= f.input :birth_date, start_year: 1900, end_year: 2030, label: 'Date de naissance', order: [:day, :month, :year] %>
