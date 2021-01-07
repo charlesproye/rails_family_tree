@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
     families_path
   end
 
-
   protected
 
   def configure_permitted_parameters

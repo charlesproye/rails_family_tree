@@ -2,8 +2,20 @@ const changeSize = () => {
   const treeWidth = document.querySelector('#tree-width');
   const insideDiv = document.querySelector('#inside-div');
   const tree = document.querySelector('.tree');
-  if (treeWidth) {
+  if (tree) {
     tree.addEventListener('scroll', () =>{
+      const wid = treeWidth.offsetWidth;
+      insideDiv.style.width = `${treeWidth.offsetWidth + 150}px`;
+    } )
+  };
+}
+
+const changeSizeShow = () => {
+  const treeWidth = document.querySelector('#tree-width');
+  const insideDiv = document.querySelector('#inside-div');
+  const treeShow = document.querySelector('.tree-show');
+  if (treeShow) {
+    treeShow.addEventListener('scroll', () =>{
       const wid = treeWidth.offsetWidth;
       insideDiv.style.width = `${treeWidth.offsetWidth + 150}px`;
     } )
@@ -34,4 +46,4 @@ const zoomInOut = () => {
 }
 
 
-export { changeSize, zoomInOut };
+export { changeSize, zoomInOut, changeSizeShow };

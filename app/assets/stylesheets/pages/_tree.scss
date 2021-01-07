@@ -2,10 +2,26 @@
   margin-top: 5px;
   width: 70%;
   height: 500px;
+  border: solid 0.5px $taupe;
+  overflow-x: scroll !important;
+  overflow-y: scroll !important;
+  position: relative;
+  white-space: nowrap;
+  border-radius: 3px;
+  box-shadow: 0 0 1px rgba(200,200,200,0.5)
+}
+
+.tree-show {
+  margin-top: 10px;
+  margin-right: 10px;
+  width: calc(100% - 300px);
+  height: 500px;
   border: solid 1px $bleu;
   overflow-x: scroll !important;
   overflow-y: scroll !important;
   position: relative;
+  white-space: nowrap;
+  border-radius: 3px;
 }
 
 #zoom-in {
@@ -172,6 +188,7 @@ right connector from last child*/
   margin-left: 10px;
   background-color: $gris-bleu;
   height: 40%;
+  border-radius: 3px;
 }
 
 .search-box {
@@ -180,6 +197,173 @@ right connector from last child*/
   margin-top: 10px;
   margin-left: 10px;
   background-color: $taupe;
-  height: calc(60% - 15px);
+  border-radius: 3px;
+  max-height: calc(60% - 15px)
 }
 
+.search-section:hover {
+  cursor: pointer
+}
+
+// Tree-show
+
+.tree-show ul {
+  padding-top: 20px; position: relative;
+
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+}
+
+.tree-show li {
+  float: left;
+  text-align: center;
+  list-style-type: none;
+  position: relative;
+  padding: 20px 5px 0 5px;
+
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+}
+
+.tree-show ul > li {
+  display:inline !important;
+}
+
+/*We will use ::before and ::after to draw the connectors*/
+
+.tree-show li::before, .tree-show li::after{
+  content: '';
+  position: absolute; top: 0; right: 50%;
+  border-top: 1px solid #ccc;
+  width: 50%; height: 20px;
+}
+.tree-show li::after{
+  right: auto; left: 50%;
+  border-left: 1px solid #ccc;
+}
+
+/*We need to remove left-right connectors from elements without
+any siblings*/
+.tree-show li:only-child::after, .tree-show li:only-child::before {
+  display: none;
+}
+
+/*Remove space from the top of single children*/
+.tree-show li:only-child{ padding-top: 0;}
+
+/*Remove left connector from first child and
+right connector from last child*/
+.tree-show li:first-child::before, .tree-show li:last-child::after{
+  border: 0 none;
+}
+/*Adding back the vertical connector to the last nodes*/
+.tree-show li:last-child::before{
+  border-right: 1px solid #ccc;
+  border-radius: 0 5px 0 0;
+  -webkit-border-radius: 0 5px 0 0;
+  -moz-border-radius: 0 5px 0 0;
+}
+.tree-show li:first-child::after{
+  border-radius: 5px 0 0 0;
+  -webkit-border-radius: 5px 0 0 0;
+  -moz-border-radius: 5px 0 0 0;
+}
+
+/*Time to add downward connectors from parents*/
+.tree-show ul ul::before{
+  content: '';
+  position: absolute; top: 0; left: 50%;
+  border-left: 1px solid #ccc;
+  width: 0; height: 20px;
+}
+
+.tree-show li a,.is-a-link{
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  text-decoration: none;
+  color: #666;
+  font-family: $text;
+  font-size: 14px;
+  display: inline-block;
+
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+}
+
+/*Time for some hover effects*/
+/*We will apply the hover effect the the lineage of the element also*/
+.tree-show li a:hover, .tree-show li a:hover+ul li a {
+  background: $beige; color: #000; border: 1px solid $beige;
+  color: white;
+}
+.tree-show li .is-a-link:hover, .tree-show li .is-a-link:hover+ul li a {
+  background: $beige ;
+  color: #000;
+  border: 1px solid $beige;
+  color: white;
+}
+
+.tree-show li a:hover, .tree-show li a:hover+ul li .not-link {
+  background: none;
+}
+.tree-show li .is-a-link:hover, .tree-show li .is-a-link:hover+ul li .not-link {
+  background: none;
+}
+
+.tree-show li a:hover, .tree-show li a:hover+ul li .is-a-link {
+  background: $beige; color: #000; border: 1px solid $beige;
+  color: white;
+}
+.tree-show li .is-a-link:hover, .tree-show li .is-a-link:hover+ul li .is-a-link {
+  background: $beige ;
+  color: #000;
+  border: 1px solid $beige;
+  color: white;
+}
+/*Connector styles on hover*/
+.tree-show li a:hover+ul li::after,
+.tree-show li a:hover+ul li::before,
+.tree-show li a:hover+ul::before,
+.tree-show li a:hover+ul ul::before{
+  border-color:  #94a0b4;
+}
+
+.tree-show li .is-a-link:hover+ul li::after,
+.tree-show li .is-a-link:hover+ul li::before,
+.tree-show li .is-a-link:hover+ul::before,
+.tree-show li .is-a-link:hover+ul ul::before{
+  border-color:  #94a0b4;
+}
+
+.tree-show .not-link {
+  border: none !important;
+  background: none;
+  &:hover {
+    background: none;
+    transform: scale(1.1);
+  }
+}
+
+.form-control {
+  height: 28px;
+}
+
+.underline-magical {
+  width: 80%;
+  background-image: linear-gradient(120deg, $beige 0%, $taupe 100%);
+  background-repeat: no-repeat;
+  background-size: 93% 0.2em;
+  background-position: 0 88%;
+
+  transition: background-size 0.25s ease-in;
+  //&:hover {
+    //background-size: 100% 88%;
+  //}
+}

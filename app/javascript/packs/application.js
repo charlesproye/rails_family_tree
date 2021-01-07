@@ -27,9 +27,10 @@ import "bootstrap";
 import {Cloudinary} from 'cloudinary-core';
 
 // Internal imports, e.g:
-import { changeSize } from './components/tree_width';
+import { changeSize, changeSizeShow } from './components/tree_width';
 import { zoomInOut } from './components/tree_width';
 import { mouseOverTree } from './components/mouse_over_tree';
+import {clickCenter, centerShow} from './components/click_center';
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -37,4 +38,7 @@ document.addEventListener('turbolinks:load', () => {
   changeSize();
   zoomInOut();
   mouseOverTree();
+  clickCenter();
+  changeSizeShow();
+  centerShow();
 });
