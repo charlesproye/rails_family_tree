@@ -11,16 +11,20 @@
   padding: 15px;
   margin-right: 10px;
   min-height: 246px;
+  border-radius: 3px;
+  position: relative;
 }
 
 .relatives-section {
-  width: 150px !important;
-  height: 150px !important;
+  width: 140px !important;
+  height: 140px !important;
   border-radius: 5px;
+  &:hover {
+    opacity: 0.9;
+  }
 }
 
 .basic-info {
-  margin-left: 20px;
   text-align: center;
   width: 100%;
   position: relative;
@@ -30,7 +34,7 @@
   content : "";
   position: absolute;
   left    : 25%;
-  bottom  : 0;
+  bottom  : -15px;
   height  : 1px;
   width   : 50%;  /* or 100px */
   border-bottom:2px solid $bleu;
@@ -52,12 +56,52 @@
 }
 
 .relatives {
-  border: 1px solid $taupe;
-  padding: 15px;
-  box-shadow: 0 0 1px grey;
 }
 
 #description-section {
   padding:40px;
   margin: auto;
+}
+
+.margin-auto {
+  margin: auto;
+  margin-top: 30px;
+}
+
+.margin-image {
+  display: block;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.edit-section {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.tree-zoom {
+  margin-right: 10px;
+}
+
+.contact-section {
+  background-color: $gris-bleu;
+  width: 290px !important;
+  margin-top: 10px;
+  border-radius: 3px;
+}
+
+.contact-section h2 {
+  position: relative;
+}
+
+.contact-section h2:before {
+  content : "";
+  position: absolute;
+  left    : 25%;
+  bottom  : -15px;
+  height  : 1px;
+  width   : 50%;  /* or 100px */
+  border-bottom:2px solid $blanc;
 }

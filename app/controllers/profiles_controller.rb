@@ -11,5 +11,6 @@ class ProfilesController < ApplicationController
   def show
     @user_act = User.where(id: params[:id])
     @user = @user_act.to_a.first
+    @users = User.where(family_id: params[:family_id])
   end
 end

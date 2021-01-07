@@ -8,9 +8,9 @@
     </div>
 <% else %>
   <div class="navbar-lewagon justify-content-center">
-    <%= link_to "Arbre", families_path %>
-    <a href="#">Actualités</a>
-    <%= link_to "Mon profil", edit_user_registration_path %>
-    <%= link_to "Déconnecter", destroy_user_session_path, method: :delete %>
+    <%= link_to "Arbre", families_path, class: 'hover hover-3' %>
+    <a href="#" class='hover hover-3'>Actualités</a>
+    <%= link_to "Mon profil", family_profile_path(current_user.family, current_user), class: 'hover hover-3' %>
+    <%= link_to "Déconnecter", destroy_user_session_path, method: :delete, class: 'hover hover-3' %>
   </div>
 <% end %>
