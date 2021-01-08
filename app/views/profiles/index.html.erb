@@ -98,9 +98,6 @@
       <div class='search-box'>
         <%= simple_form_for :search, url: family_profiles_path, method: "GET", html: { class: 'form-inline mb-2' } do |f| %>
           <%= f.input :user, input_html: {placeholder: "Cherchez un nom..."}, label: false %>
-          <%= button_tag type: 'submit', class: "bleu-button ml-1 submit-button" do %>
-            <i class="fas fa-search blanc-color"></i>
-          <% end %>
         <% end %>
         <% if @users_searched %>
           <% @users_searched.first(5).each do |user| %>
@@ -112,7 +109,7 @@
                       <%= user.first_name.first.upcase + user.last_name.first.upcase  %>
                     </div>
                 <% end %>
-                <p class='ml-2' style='padding-top: 6px;'> <%= user.first_name.capitalize %> <%= user.last_name.capitalize %> </p>
+                <p class='ml-2 blanc-color' style='padding-top: 6px;'> <%= user.first_name.capitalize %> <%= user.last_name.capitalize %> </p>
               </div>
           <% end %>
         <% end %>

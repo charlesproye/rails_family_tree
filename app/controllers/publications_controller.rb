@@ -1,6 +1,10 @@
 class PublicationsController < ApplicationController
   def index
     @publications = Publication.all
+
+    if params[:search].present?
+      @publications = @publications.search_by_publi(params[:search]['publication'])
+    end
   end
 
   def show
@@ -29,6 +33,10 @@ class PublicationsController < ApplicationController
   end
 
   def destroy
+    @publication = Publication.find(params[:id])
+    @publication.destroy
+
+    redirect_to family_publications_path
   end
 
   protected
