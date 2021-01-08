@@ -1,0 +1,16 @@
+<div class="container fix-footer">
+  <% @publications.each do |publi| %>`
+    <div class="card-family">
+      <h1> <%= publi.title %> </h1>
+      <p> <%= publi.content %> </p>
+      <% if publi.photos.attached? %>
+        <% publi.photos.each do |photo_key| %>
+          <div>
+            <%= cl_image_tag photo_key.key %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+  <%= link_to 'Créer une publication',  new_family_publication_path(current_user.family), class: 'bleu-button'  %>
+</div>

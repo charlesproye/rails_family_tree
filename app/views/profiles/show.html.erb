@@ -9,11 +9,11 @@
 
 <div class="container fix-footer">
   <% if current_user == @user %>
-    <h1 class="text-center bleu-color">
+    <h1 class="bleu-color text-center" style='font-size: 40px;'>
       Mon profil
     </h1>
   <% else %>
-    <h1 class="text-center bleu-color">
+    <h1 class="bleu-color text-center" style='font-size: 40px;'>
         Profil de <%=@user.first_name.capitalize %>
     </h1>
   <% end %>
