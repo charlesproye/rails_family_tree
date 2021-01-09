@@ -228,6 +228,7 @@
                           <% end %>
                           </div>
                         </div>
+                        <% if grand_child.descendant_ids != [] %>
                         <ul>
                           <% @users.select {|u| u.parent == grand_child }.each_with_index do |great_grand_child, index| %>
                             <% if great_grand_child.couple_blood == [] %>
@@ -260,13 +261,14 @@
                                   <% end %>
                                   </div>
                                 </div>
+                                <% if great_grand_child.descendant_ids != [] %>
                                 <ul>
                                   <% @users.select {|u| u.parent == great_grand_child }.each_with_index do |great_great_grand_child, index| %>
                                     <% if great_great_grand_child.couple_blood == [] %>
                                       <li>
                                         <div class="is-a-link">
                                           <div class='avatar-inline'>
-                                          <%= link_to family_profile_path(great_great_grand_child.family, great_great_grand_child) do  %>
+                                          <%= link_to family_profile_path(great_great_grand_child.family, great_great_grand_child), class: 'not-link' do  %>
                                             <% if great_great_grand_child.photo.attached? %>
                                               <div class="av-js" data-id='<%= great_great_grand_child.id %>' data-job='<%= great_great_grand_child.job %>' data-firstname='<%= great_great_grand_child.first_name %>' data-lastname='<%= great_great_grand_child.last_name %>' data-birthdate='<%= great_great_grand_child.birth_date.strftime('%d/%m/%y') %>' data-age='<%= age(great_great_grand_child.birth_date) %>' data-family='<%=@users.first.family.name %>'>
                                                 <%= cl_image_tag great_great_grand_child.photo.key, class: 'avatar-family' %>
@@ -283,10 +285,12 @@
                                     <% end %>
                                   <% end %>
                                 </ul>
+                                <% end %>
                               </li>
                             <% end %>
                           <% end %>
                         </ul>
+                        <% end %>
                       </li>
                     <% end %>
                   <% end %>
