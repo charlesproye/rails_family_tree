@@ -141,7 +141,7 @@ françoise = User.create!(first_name: 'Françoise', last_name: 'Duhamel', parent
 #jacotte
 #1
 jacotte = User.create!(first_name: 'jacotte', last_name: 'Duhamel', parent: léon, email: 'jacotte@mail.com', password: 'azerty', family_id: family1.id, direct_blood: true, birth_date: "Mar, 28 Mar 1986", city: "Lille", phone: '0600000000')
-yves = User.create!(first_name: 'yves', last_name: 'Moinet', email: 'yves@mail.com', password: 'azerty', family_id: family1.id, direct_blood: false, birth_date: "Mar, 28 Mar 1986", city: "Lille", parent: jacotte)
+# yves = User.create!(first_name: 'yves', last_name: 'Moinet', email: 'yves@mail.com', password: 'azerty', family_id: family1.id, direct_blood: false, birth_date: "Mar, 28 Mar 1986", city: "Lille", parent: jacotte)
   #2
   pauline = User.create!(first_name: 'pauline', last_name: 'Moinet', email: 'pauline@mail.com', password: 'azerty', family_id: family1.id, direct_blood: true, parent: jacotte, birth_date: "Mar, 28 Mar 1986", city: "Lille", phone: '0600000000')
     alexis_4 = User.create!(first_name: 'alexis', last_name: 'Michenaud_Rague', email: 'alexis_4@mail.com', password: 'azerty', family_id: family1.id, direct_blood: true, parent: pauline, birth_date: "Mar, 28 Mar 1986", city: "Lille", phone: '0600000000')
@@ -150,7 +150,7 @@ yves = User.create!(first_name: 'yves', last_name: 'Moinet', email: 'yves@mail.c
     audrey = User.create!(first_name: 'audrey', last_name: 'Michenaud_Rague', email: 'audrey@mail.com', password: 'azerty', family_id: family1.id, direct_blood: true, parent: pauline, birth_date: "Mar, 28 Mar 1986", city: "Lille", phone: '0600000000')
 
   rodolphe = User.create!(first_name: 'rodolphe', last_name: 'Moinet', email: 'rodolphe@mail.com', password: 'azerty', family_id: family1.id, direct_blood: true, parent: jacotte, birth_date: "Mar, 28 Mar 1986", city: "Lille", phone: '0600000000')
-  isabelle_4 = User.create!(first_name: 'isabelle', last_name: 'Moinet', email: 'isabelle_4@mail.com', password: 'azerty', family_id: family1.id, direct_blood: false, parent: rodolphe, birth_date: "Mar, 28 Mar 1986", city: "Lille", phone: '0600000000', lady_name: 'Taisne')
+  # isabelle_4 = User.create!(first_name: 'isabelle', last_name: 'Moinet', email: 'isabelle_4@mail.com', password: 'azerty', family_id: family1.id, direct_blood: false, parent: rodolphe, birth_date: "Mar, 28 Mar 1986", city: "Lille", phone: '0600000000', lady_name: 'Taisne')
     jules_4 = User.create!(first_name: 'jules', last_name: 'Moinet', email: 'jules_4@mail.com', password: 'azerty', family_id: family1.id, direct_blood: true, parent: rodolphe, birth_date: "Mar, 28 Mar 1986", city: "Lille", phone: '0600000000')
     hector = User.create!(first_name: 'hector', last_name: 'Moinet', email: 'hector@mail.com', password: 'azerty', family_id: family1.id, direct_blood: true, parent: rodolphe, birth_date: "Mar, 28 Mar 1986", city: "Lille", phone: '0600000000')
 
@@ -160,7 +160,7 @@ yves = User.create!(first_name: 'yves', last_name: 'Moinet', email: 'yves@mail.c
     maud = User.create!(first_name: 'maud', last_name: 'Proye', email: 'maud@mail.com', password: 'azerty', family_id: family1.id, direct_blood: true, parent: elvire, birth_date: "Mar, 28 Mar 1986", city: "Lille", phone: '0600000000')
 
   igor = User.create!(first_name: 'igor', last_name: 'Moinet', email: 'igor@mail.com', password: 'azerty', family_id: family1.id, direct_blood: true, parent: jacotte, birth_date: "Mar, 28 Mar 1986", city: "Lille", phone: '0600000000')
-  coralie = User.create!(first_name: 'coralie', last_name: 'Moinet', email: 'coralie@mail.com', password: 'azerty', family_id: family1.id, direct_blood: false, parent: igor, birth_date: "Mar, 28 Mar 1986", city: "Lille", phone: '0600000000', lady_name: 'Gascquet')
+  # coralie = User.create!(first_name: 'coralie', last_name: 'Moinet', email: 'coralie@mail.com', password: 'azerty', family_id: family1.id, direct_blood: false, parent: igor, birth_date: "Mar, 28 Mar 1986", city: "Lille", phone: '0600000000', lady_name: 'Gascquet')
     oscar_4 = User.create!(first_name: 'oscar', last_name: 'Moinet', email: 'oscar_4@mail.com', password: 'azerty', family_id: family1.id, direct_blood: true, parent: igor, birth_date: "Mar, 28 Mar 1986", city: "Lille", phone: '0600000000')
     margaux = User.create!(first_name: 'margaux', last_name: 'Moinet', email: 'margaux@mail.com', password: 'azerty', family_id: family1.id, direct_blood: true, parent: igor, birth_date: "Mar, 28 Mar 1986", city: "Lille", phone: '0600000000')
     max = User.create!(first_name: 'max', last_name: 'Moinet', email: 'max@mail.com', password: 'azerty', family_id: family1.id, direct_blood: true, parent: igor, birth_date: "Mar, 28 Mar 1986", city: "Lille", phone: '0600000000')
@@ -219,9 +219,9 @@ bernard = User.create!(first_name: 'bernard', last_name: 'Duhamel', parent: léo
 
 
 
-couple1 = Couple.create!(blood_user_id: jacotte.id, out_user: yves, family_id: family1.id)
-couple2 = Couple.create!(blood_user: rodolphe, out_user: isabelle_4, family_id: family1.id)
-couple3 = Couple.create!(blood_user: igor, out_user: coralie, family_id: family1.id)
+#couple1 = Couple.create!(blood_user_id: jacotte.id, out_user: yves, family_id: family1.id)
+#couple2 = Couple.create!(blood_user: rodolphe, out_user: isabelle_4, family_id: family1.id)
+#couple3 = Couple.create!(blood_user: igor, out_user: coralie, family_id: family1.id)
 couple4 = Couple.create!(blood_user: léon, out_user: paulette, family_id: family1.id)
 
 puts "#{User.all.count} users created"

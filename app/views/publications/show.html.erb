@@ -1,1 +1,47 @@
-show.html.erb
+<div class="container fix-footer">
+  <div class="publi-show blanc-background-color">
+    <h1> <%= @publication.title %></h1>
+    <p style='font-style: italic;'>Publié le <%= @publication.created_at.strftime('%d/%m/%y') %> par <%= @publication.user.first_name %> <%= @publication.user.last_name %> </p>
+    <div class='mt-2'>
+      <p style='text-align: justify;'> <%= @publication.content %></p>
+    </div>
+    <div id="slider">
+        <% if @publication.photos.count == 1 %>
+            <%= cl_image_tag @publication.photos[0].key, class: 'only-im' %>
+        <% elsif @publication.photos.count == 2 %>
+          <figure>
+            <%= cl_image_tag @publication.photos[0].key, class: 'car-image' %>
+            <%= cl_image_tag @publication.photos[1].key, class: 'car-image' %>
+            <%= cl_image_tag @publication.photos[0].key, class: 'car-image' %>
+            <%= cl_image_tag @publication.photos[1].key, class: 'car-image' %>
+            <%= cl_image_tag @publication.photos[0].key, class: 'car-image' %>
+          </figure>
+        <% elsif @publication.photos.count == 3 %> %>
+          <figure>
+            <%= cl_image_tag @publication.photos[0].key, class: 'car-image' %>
+            <%= cl_image_tag @publication.photos[1].key, class: 'car-image' %>
+            <%= cl_image_tag @publication.photos[2].key, class: 'car-image' %>
+            <%= cl_image_tag @publication.photos[0].key, class: 'car-image' %>
+            <%= cl_image_tag @publication.photos[1].key, class: 'car-image' %>
+          </figure>
+        <% elsif @publication.photos.count == 4 %> %>
+          <figure>
+            <%= cl_image_tag @publication.photos[0].key, class: 'car-image' %>
+            <%= cl_image_tag @publication.photos[1].key, class: 'car-image' %>
+            <%= cl_image_tag @publication.photos[2].key, class: 'car-image' %>
+            <%= cl_image_tag @publication.photos[3].key, class: 'car-image' %>
+            <%= cl_image_tag @publication.photos[0].key, class: 'car-image' %>
+          </figure>
+        <% elsif @publication.photos.count == 5 %> %>
+          <figure>
+            <% @publication.photos.each do |photo| %>
+              <%= cl_image_tag photo.key, class: 'car-image' %>
+            <% end %>
+          </figure>
+        <% end %>
+    </div>
+    <div class="text-center mt-3">
+      <%= link_to 'Back', family_publications_path(current_user.family), class: 'bleu-button'  %>
+    </div>
+  </div>
+</div>
