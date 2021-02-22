@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :families, only: [:index, :show, :new, :create, :edit, :update] do
-    resources :publications
+    resources :publications do
+      resources :reviews
+    end
     resources :profiles
   end
 end
