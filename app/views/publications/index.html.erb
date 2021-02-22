@@ -1,0 +1,50 @@
+<div class="container fix-footer">
+  <h1 class="bleu-color text-center" style='font-size: 40px;'>Actualités familiales</h1>
+  <div class="d-flex mt-4">
+    <div>
+      <div class='search-box-publis text-center' style='margin: auto;'>
+        <%= link_to 'Publier',  new_family_publication_path(current_user.family), class: 'bleu-button-big' %>
+      </div>
+      <div class='search-box-publi mt-2'>
+      <%= simple_form_for :search, url: family_publications_path, method: "GET", html: { class: 'form-inline mb-2' } do |f| %>
+        <%= f.input :publication, input_html: {placeholder: "Recherche..."}, label: false, class:'my-box' %>
+      <% end %>
+      </div>
+    </div>
+    <div style= 'width: 75%; margin-bottom: 50px;'>
+      <% if @publications.count == 0 %>
+          <p class='bleu-color text-center' style='font-style: italic;'>Il n'y a pas encore de contenu publié.</p>
+      <% end %>
+      <% @publications.order(created_at: :desc).each do |publi| %>
+        <%= link_to family_publication_path(current_user.family,publi), class: 'bleu-color' do  %>
+          <div class="card-publi" <% unless publi == @publications.order(created_at: :desc).first %> style='margin-top: 25px;' <% end %>>
+            <% if publi.photos.attached? %>
+              <%= cl_image_tag publi.photos.first.key, class: 'covering image-publi' %>
+            <% else %>
+              <div class="bleu-background-color blanc-color image-publi">
+                <h1 class='text-center' style='padding: 70px 20px; '><%= publi.title %></h1>
+              </div>
+            <% end %>
+              <div class="card-publi-infos">
+                <div>
+                  <h2><%= publi.title.capitalize %></h2>
+                  <p><%= publi.content.first(300) %></p>
+                </div>
+                <% if publi.user.photo.attached? %>
+                  <%= cl_image_tag publi.user.photo.key, class: "card-publi-user avatar-family taupe-border" %>
+                <% else %>
+                    <div class="card-publi-user avatar-family default taupe-border"> <%= publi.user.first_name.first.upcase %><%= publi.user.last_name.first.upcase %></div>
+                <% end %>
+              </div>
+              <% if publi.user == current_user %>
+                <%= link_to family_publication_path(current_user.family, publi), method: 'delete', class: 'taupe-button rounded cross-position' do  %>
+                  <i class="fas fa-times blanc-color"></i>
+                <% end %>
+              <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
+

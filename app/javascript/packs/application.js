@@ -25,6 +25,9 @@ require("channels")
 // External imports
 import "bootstrap";
 import {Cloudinary} from 'cloudinary-core';
+//= require jquery
+//= require rails_emoji_picker
+//= require_tree .
 
 // Internal imports, e.g:
 import { changeSize, changeSizeShow } from './components/tree_width';

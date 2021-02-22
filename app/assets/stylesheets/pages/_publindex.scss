@@ -1,0 +1,29 @@
+.search-box-publi {
+  padding: 15px;
+  margin: auto;
+  margin-top: 20px;
+  margin-right: 20px;
+  background-color: $taupe;
+  border-radius: 3px;
+  max-height: calc(60% - 15px);
+  flex-grow: 1;
+}
+
+.search-box-publis {
+  padding: 10px;
+  margin: auto;
+  margin-top: 20px;
+  background-color: $bleu;
+  border-radius: 3px;
+  max-height: calc(60% - 15px);
+  flex-grow: 1;
+  margin-right: 20px !important;
+}
+
+.form-inline input.form-control {
+  width: 100%;
+}
+
+.form-group {
+  width: 100% !important;
+}

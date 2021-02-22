@@ -31,5 +31,59 @@
 }
 
 
+.card-publi {
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  position: relative;
+  border-radius: 3px;
+}
+
+.card-publi .image-publi {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 3px;
+}
+
+.card-publi h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-publi p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+
+.card-publi .card-publi-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+  border-top: 1px solid $taupe;
+}
+
+.card-publi-infos .card-publi-user {
+  position: absolute;
+  right: 16px;
+  top: -27px;
+}
+
+.image-publi {
+  min-height: 300px;
+}
+
+.cross-position {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  border-radius: 50% !important;
+  padding: 5px 10px !important;
+  z-index: 1000;
+}
 
 

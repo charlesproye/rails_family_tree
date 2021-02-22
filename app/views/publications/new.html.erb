@@ -1,0 +1,12 @@
+<div class='container fix-footer' style='width: 600px;'>
+  <h1 class="bleu-color text-center" style='font-size: 40px;'>Votre publication</h1>
+  <%= simple_form_for [current_user.family, @publication] do |f| %>
+    <%= f.input :title, label: 'Titre'  %>
+    <%= f.input :content,as: :text, label: 'Contenu', data: { emojiable: true }  %>
+    <%= f.input :photos, as: :file, input_html: { multiple: true }, label: 'Ajouter des images :' %>
+    <div class='text-center mb-3'>
+      <%= f.button :submit, 'Publier', class: 'bleu-button px-2' %>
+    </div>
+
+  <% end %>
+</div>

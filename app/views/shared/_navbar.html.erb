@@ -2,14 +2,10 @@
   <div class="navbar-lewagon justify-content-end">
     <%= link_to "S'identifier", user_session_path %>
   </div>
-<% elsif controller_name == "families" && action_name == 'index' %>
-    <div class="navbar-lewagon justify-content-center">
-        <%= render 'shared/small_tree' %>
-    </div>
 <% else %>
   <div class="navbar-lewagon justify-content-center">
     <%= link_to "Arbre", families_path, class: 'hover hover-3' %>
-    <a href="#" class='hover hover-3'>Actualités</a>
+    <%= link_to "Actualités", family_publications_path(current_user.family), class: 'hover hover-3' %>
     <%= link_to "Mon profil", family_profile_path(current_user.family, current_user), class: 'hover hover-3' %>
     <%= link_to "Déconnecter", destroy_user_session_path, method: :delete, class: 'hover hover-3' %>
   </div>

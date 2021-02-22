@@ -17,6 +17,25 @@
   }
 }
 
+.bleu-button-big {
+  color: $blanc;
+  background-color: $bleu;
+  border-radius: 3px;
+  padding: 4px;
+  font-family: $title;
+  font-size: 24px;
+  text-transform: uppercase;
+  text-align: center;
+  transition: background 0.3s ease;
+  border: none !important;
+  &:hover {
+    opacity: 0.8;
+    cursor: pointer;
+    color: $blanc;
+    border: none !important;
+  }
+}
+
 .blue-button-circle {
   color: $blanc;
   background-color: $bleu;
@@ -137,7 +156,7 @@
 }
 
 .blanc-background-color {
-  background-color: $blanc;
+  background-color: white;
 }
 
 .taupe-background-color {
