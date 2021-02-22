@@ -9,6 +9,8 @@ class PublicationsController < ApplicationController
 
   def show
     @publication = Publication.find(params[:id])
+    @review = Review.new
+    @reviews = Review.where(publication: @publication)
   end
 
   def new

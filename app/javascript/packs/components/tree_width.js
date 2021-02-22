@@ -10,15 +10,25 @@ const changeSize = () => {
   };
 }
 
+
 const changeSizeShow = () => {
   const treeWidth = document.querySelector('#tree-width');
   const insideDiv = document.querySelector('#inside-div');
   const treeShow = document.querySelector('.tree-show');
+  const avatars = document.querySelectorAll('.av-js');
+  const wid = treeWidth.offsetWidth;
   if (treeShow) {
-    treeShow.addEventListener('scroll', () =>{
-      const wid = treeWidth.offsetWidth;
+    window.addEventListener('scroll', () =>{
       insideDiv.style.width = `${treeWidth.offsetWidth + 150}px`;
-    } )
+    });
+    insideDiv.addEventListener('mouseenter', () => {
+      avatars.forEach((avatar) => {
+          if (avatar.dataset.id == treeShow.dataset.id) {
+            avatar.parentNode.parentNode.parentNode.style.backgroundColor = '#9a8c98ff';
+            avatar.scrollIntoView({behavior: "smooth", inline: "center", block: 'center'});
+          };
+      });
+    });
   };
 }
 

@@ -150,7 +150,7 @@
           <li id='tree-width'>
             <div class='is-a-link'>
               <div class='avatar-inline'>
-              <% @users.roots.each do |root| %>
+              <% @roots.each do |root| %>
                 <%= link_to family_profile_path(root.family, root), class: 'not-link' do  %>
                   <% if root.photo.attached? %>
                     <div class='av-js' data-id='<%= root.id %>' data-job='<%= root.job %>' data-firstname='<%= root.first_name %>' data-lastname='<%= root.last_name %>' data-birthdate='<%= root.birth_date.strftime('%d/%m/%y') %>'  data-age='%= age(root.birth_date) %>' data-family='<%=@users.first.family.name %>'>
@@ -166,7 +166,7 @@
               </div>
             </div>
             <ul>
-              <% @users.select {|u| u.parent == @users.roots.where(direct_blood:true).first }.each do |child| %>
+              <% @users.select {|u| u.parent == @roots.where(direct_blood:true).first }.each do |child| %>
               <li>
                 <div class='is-a-link'>
                   <div class='avatar-inline'>
@@ -197,7 +197,7 @@
                   </div>
                 </div>
                 <ul>
-                  <% @users.select {|u| u.parent == child }.each_with_index do |grand_child, index| %>
+                  <% @users.select {|u| u.ancestry ? (u.ancestry.rindex("/") ? u.ancestry[u.ancestry.rindex("/")+1..].to_i == child.id : false) : false }.each_with_index do |grand_child, index| %>
                     <% if grand_child.couple_blood == [] %>
                       <li>
                         <div class="is-a-link">
@@ -230,7 +230,7 @@
                         </div>
                         <% if grand_child.descendant_ids != [] %>
                         <ul>
-                          <% @users.select {|u| u.parent == grand_child }.each_with_index do |great_grand_child, index| %>
+                          <% @users.select {|u| u.ancestry ? (u.ancestry.rindex("/") ? u.ancestry[u.ancestry.rindex("/")+1..].to_i == grand_child.id : false) : false }.each_with_index do |great_grand_child, index| %>
                             <% if great_grand_child.couple_blood == [] %>
                               <li>
                                 <div class="is-a-link">
@@ -263,7 +263,7 @@
                                 </div>
                                 <% if great_grand_child.descendant_ids != [] %>
                                 <ul>
-                                  <% @users.select {|u| u.parent == great_grand_child }.each_with_index do |great_great_grand_child, index| %>
+                                  <% @users.select {|u| u.ancestry ? (u.ancestry.rindex("/") ? u.ancestry[u.ancestry.rindex("/")+1..].to_i == great_grand_child.id : false) : false }.each_with_index do |great_great_grand_child, index| %>
                                     <% if great_great_grand_child.couple_blood == [] %>
                                       <li>
                                         <div class="is-a-link">
