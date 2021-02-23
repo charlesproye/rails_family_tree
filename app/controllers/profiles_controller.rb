@@ -11,11 +11,11 @@ class ProfilesController < ApplicationController
         users.family_id,
         users.job
       FROM users
-      GROUP BY
+      ORDER BY
         users.id,
         users.first_name,
         users.last_name,
-        users.birth_date
+        users.birth_date DESC
       LIMIT 1000"
       )
     @users_t = User.where(family_id: params[:family_id])
